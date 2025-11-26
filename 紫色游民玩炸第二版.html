@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>梦幻香山 :晶脉 · 香养 · 数字游民社区</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            height: 350px;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        /* 主色调参考色 #574266 */
+        .tab-active {
+            border-bottom-color: #574266;
+            color: #574266;
+            font-weight: 700;
+        }
+        .tab-inactive {
+            border-bottom-color: transparent;
+            color: #6b7280; /* gray-500 */
+        }
+        .bg-muted-purple {
+            background-color: #f3f1f5; /* 极淡的紫灰色 */
+        }
+        .text-muted-purple {
+            color: #574266;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <h1 class="text-3xl font-bold text-center text-[#574266]">
+                海南屯昌·梦幻香山
+            </h1>
+            <p class="text-xl font-medium text-center text-gray-700 mt-1">
+                数字游民社区战略方案
+            </p>
+        </div>
+    </header>
+
+    <nav class="bg-white sticky top-0 z-10 shadow-md">
+        <div id="nav-container" class="max-w-5xl mx-auto flex justify-center space-x-4 sm:space-x-8 border-b border-gray-200 overflow-x-auto">
+            <button data-tab="overview" class="tab-button tab-active text-sm sm:text-base py-4 px-3 sm:px-4 border-b-2 font-medium transition-colors duration-200 whitespace-nowrap">
+                项目概览
+            </button>
+            <button data-tab="context" class="tab-button tab-inactive text-sm sm:text-base py-4 px-3 sm:px-4 border-b-2 font-medium transition-colors duration-200 whitespace-nowrap">
+                商业背景
+            </button>
+            <button data-tab="question" class="tab-button tab-inactive text-sm sm:text-base py-4 px-3 sm:px-4 border-b-2 font-medium transition-colors duration-200 whitespace-nowrap">
+                核心问题
+            </button>
+            <button data-tab="market" class="tab-button tab-inactive text-sm sm:text-base py-4 px-3 sm:px-4 border-b-2 font-medium transition-colors duration-200 whitespace-nowrap">
+                市场运营
+            </button>
+            <button data-tab="validation" class="tab-button tab-inactive text-sm sm:text-base py-4 px-3 sm:px-4 border-b-2 font-medium transition-colors duration-200 whitespace-nowrap">
+                战略验证
+            </button>
+            <button data-tab="implementation" class="tab-button tab-inactive text-sm sm:text-base py-4 px-3 sm:px-4 border-b-2 font-medium transition-colors duration-200 whitespace-nowrap">
+                实施路径
+            </button>
+        </div>
+    </nav>
+
+    <main id="contentContainer" class="max-w-7xl mx-auto p-4 md:p-8">
+
+        <section id="overview" class="space-y-8">
+            <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-[#574266] mb-4">项目概览：水晶地脉上的芳香康养游民社区</h2>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                    本方案旨在响应“2025海南数字游民国际社区运营大赛”，针对海南屯昌县的“梦幻香山数字康养社区”项目，提出一个集芳香康养、数字游民、本地融合与水晶文化于一体的综合运营战略。我们的目标是在18个月内，构建一个财务可持续、具全球吸引力且深度融合本地的数字游民社区，实现“水晶地脉，芳香秘境”的独特价值。
+                </p>
+            </div>
+
+            <h3 class="text-xl font-semibold text-center text-gray-800">四大核心支柱</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <span class="text-3xl">🌿</span>
+                    <h4 class="text-lg font-bold text-[#574266] mt-2 mb-2">芳香康养 (Wellness)</h4>
+                    <p class="text-sm text-gray-600">
+                        依托4A景区、金椰级共享农庄及“四香”产业基础，提供集住宿、餐饮、芳疗于一体的深度康养体验。
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <span class="text-3xl">💻</span>
+                    <h4 class="text-lg font-bold text-[#574266] mt-2 mb-2">数字游民 (Nomad)</h4>
+                    <p class="text-sm text-gray-600">
+                        利用现有创客空间和会议厅，升级网络与办公设施，打造高效、静谧、富有灵感的远程工作环境。
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <span class="text-3xl">🤝</span>
+                    <h4 class="text-lg font-bold text-[#574266] mt-2 mb-2">本地融合 (Local)</h4>
+                    <p class="text-sm text-gray-600">
+                        结合屯昌本地文化与芳香博览馆，开发文化体验项目，推动游民与本地社区的真实互动与共创。
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <span class="text-3xl">💎</span>
+                    <h4 class="text-lg font-bold text-[#574266] mt-2 mb-2">水晶文化 (Crystal)</h4>
+                    <p class="text-sm text-gray-600">
+                        挖掘“世界第二大水晶矿脉”的独特IP，开发冥想、能量疗愈等特色活动，形成全球唯一的心灵栖息地。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-center text-gray-800 mb-6">目标市场细分 (Target Market)</h3>
+                <p class="text-center text-gray-600 mb-4">
+                    我们的目标客群是寻求工作与生活平衡，并对深度文化和康养体验感兴趣的全球游民。
+                </p>
+                <div class="chart-container" style="height: 300px; max-height: 350px;">
+                    <canvas id="marketChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="context" class="hidden space-y-8">
+            <div class="text-left p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-[#574266] mb-4">商业背景与决策框架</h2>
+                <p class="text-base text-gray-700 max-w-3xl leading-relaxed">
+                    此部分详细说明了我们的战略起点。我们整合了康养经济学家、数字社区架构师和海南市场分析师的专业见解。战略目标是利用海南自贸港的政策优势和梦幻香山独特的自然禀赋，填补亚洲高端“康养型”数字游民社区的市场空白。决策将围绕投资、合作、品牌和社区培育展开。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">战略目标</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-[#574266] font-bold mr-2">1.</span>
+                            <span><strong>6个月内启动：</strong> 建成财务可持续、全球吸引力的游民社区。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#574266] font-bold mr-2">2.</span>
+                            <span><strong>100名初始成员：</strong> 吸引高净值、高粘性的核心游民群体。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#574266] font-bold mr-2">3.</span>
+                            <span><strong>区域标杆：</strong> 打造海南乃至亚洲的“康养+数字游民”第一品牌。</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">市场缺口与机遇</h3>
+                    <p class="text-gray-700">
+                        全球远程工作需求激增，但缺乏将“深度康养”与“高效工作”结合的高端目的地。巴厘岛等竞品趋于饱和且同质化。梦幻香山凭借其“芳香”和“水晶”的独特性，以及海南的政策支持，具备创造“蓝海市场”的潜力。
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-center text-gray-800 mb-6">SWOT 综合分析</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <h4 class="font-bold text-lg text-green-800">优势 (Strengths)</h4>
+                        <ul class="list-disc list-inside mt-2 text-green-700 text-sm">
+                            <li>4A级景区，生态基底好</li>
+                            <li>独特“芳香”与“水晶”文化IP</li>
+                            <li>已投资上亿，住宿/餐饮/办公设施已具备</li>
+                            <li>金椰级共享农庄，产业融合基础</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                        <h4 class="font-bold text-lg text-red-800">劣势 (Weaknesses)</h4>
+                        <ul class="list-disc list-inside mt-2 text-red-700 text-sm">
+                            <li>位于屯昌中部，交通相对不便</li>
+                            <li>全球知名度低，缺乏数字游民品牌认知</li>
+                            <li>网络基础设施可能需大规模升级</li>
+                            <li>康养特色强，但对纯技术型游民吸引力待验</li>
+                        </ul>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                        <h4 class="font-bold text-lg text-blue-800">机遇 (Opportunities)</h4>
+                        <ul class="list-disc list-inside mt-2 text-blue-700 text-sm">
+                            <li>海南自贸港税收及签证优惠政策</li>
+                            <li>全球“康养+远程办公”市场蓝海</li>
+                            <li>政府举办大赛，提供初期支持与曝光</li>
+                            <li>后疫情时代对健康、低密度生活环境的追求</li>
+                        </ul>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                        <h4 class="font-bold text-lg text-yellow-800">威胁 (Threats)</h4>
+                        <ul class="list-disc list-inside mt-2 text-yellow-700 text-sm">
+                            <li>巴厘岛、清迈等成熟竞品的价格与社区优势</li>
+                            <li>国际地缘政治与旅行限制风险</li>
+                            <li>潜在的网络访问限制（对比国际游民需求）</li>
+                            <li>运营成本（尤其在初期）可能高于预期</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="question" class="hidden space-y-8">
+            <div class="text-left p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-[#574266] mb-4">核心商业问题与假设</h2>
+                <p class="text-base text-gray-700 max-w-3xl leading-relaxed">
+                    本节聚焦于我们试图解决的核心战略问题，并提出了一个可验证的工作假设。我们必须找到一个能平衡全球吸引力、本地政府协同和长期盈利能力的运营模式。我们的假设是，一个深度整合的混合模式是实现这一目标的最佳路径。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#574266]">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">主要战略问题</h3>
+                    <p class="text-lg text-gray-700 font-medium">
+                        “在梦幻香山现有康养基础上，应构建何种运营模式，才能在3年内实现经济自足，并确立其作为亚洲首选‘康养型’数字游民目的地的地位？”
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-amber-600">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">工作假设</h3>
+                    <p class="text-lg text-gray-700 font-medium">
+                        “一个结合了‘高端康养服务’、‘会员制社区管理’、‘本地文化融合’和‘创业生态支持’的混合运营模式，将能吸引高价值游民，实现高于市场平均的留存率和盈利能力。”
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-center text-gray-800 mb-6">运营模式对比分析</h3>
+                <p class="text-center text-gray-600 mb-4">
+                    我们将我们设想的“梦幻香山混合模式”与全球主流模式进行对比，突出我们在“康养特色”和“政策支持”上的独特优势。
+                </p>
+                <div class="chart-container">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="market" class="hidden space-y-8">
+            <div class="text-left p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-[#574266] mb-4">市场与运营参数</h2>
+                <p class="text-base text-gray-700 max-w-3xl leading-relaxed">
+                    本部分定义了项目的关键边界条件。我们明确了目标市场、分析了竞争格局，并设定了财务和时间上的约束。所有运营活动必须严格遵守海南自贸港的法规环境，同时充分利用其政策红利。
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">关键参数</h3>
+                <ul class="space-y-4 text-gray-700">
+                    <li><strong>时间规划：</strong> 6个月内启动试点项目，第3年实现社区自我维持和盈利。</li>
+                    <li><strong>财务约束：</strong> 目标在第2年实现收支平衡，第4年实现20%的净利润率。</li>
+                    <li><strong>监管环境：</strong> 严格遵守中国签证、网络和商业法规，同时最大化利用海南自贸港（FTP）的特殊政策。</li>
+                    <li><strong>道德考量：</strong> 确保社区包容性，尊重本地文化，避免对本地住房市场造成负面冲击，实现透明运营。</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-center text-gray-800 mb-6">全球数字游民目的地竞品定位</h3>
+                <p class="text-center text-gray-600 mb-4">
+                    此图表分析了主要竞争对手在“社区成熟度”和“生活成本”两个维度的位置。气泡大小代表“康养特色”的强度。梦幻香山定位为中等成本、高康养特色的新兴社区。
+                </p>
+                <div class="chart-container">
+                    <canvas id="bubbleChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="validation" class="hidden space-y-8">
+            <div class="text-left p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-[#574266] mb-4">质量保证与战略验证</h2>
+                <p class="text-base text-gray-700 max-w-3xl leading-relaxed">
+                    为确保方案的稳健性，我们设计了多情景财务模型和敏感性分析。这将帮助我们识别关键风险点（如签证政策变动或网络访问受限），并提前准备应对策略。我们的模型基于对西方和亚洲游民情绪的交叉验证，以减轻单一视角的偏见。
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-center text-gray-800 mb-6">三情景财务预测 (3年期收入)</h3>
+                <p class="text-center text-gray-600 mb-4">
+                    我们模拟了三种可能的发展轨迹：保守（增长缓慢）、预期（稳定增长）和高增长（政策红利充分释放）。运营策略将根据实际情况在三者间动态调整。
+                </p>
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">敏感性与风险分析</h3>
+                <div class="divide-y divide-gray-200">
+                    <div class="py-4">
+                        <h4 class="font-semibold text-gray-700">关键风险点 1: 签证政策 (高影响)</h4>
+                        <p class="text-sm text-gray-600 mt-1">
+                            <strong>缓解策略：</strong> 与政府建立紧密联系，争取将数字游民社区纳入特殊签证试点。同时开发针对国内远程工作者的产品线。
+                        </p>
+                    </div>
+                    <div class="py-4">
+                        <h4 class="font-semibold text-gray-700">关键风险点 2: 网络访问 (高影响)</h4>
+                        <p class="text-sm text-gray-600 mt-1">
+                            <strong>缓解策略：</strong> 投资专用国际网络线路，并将其作为高端会员套餐的核心卖点。透明化网络服务水平。
+                        </p>
+                    </div>
+                    <div class="py-4">
+                        <h4 class="font-semibold text-gray-700">关键风险点 3: 市场接受度 (中影响)</h4>
+                        <p class="text-sm text-gray-600 mt-1">
+                            <strong>缓解策略：</strong> 通过3个月的试点项目（50人规模）收集早期反馈，快速迭代产品，利用NPS（净推荐值）跟踪满意度。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="implementation" class="hidden space-y-8">
+            <div class="text-left p-6 bg-white rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-[#574266] mb-4">实施与持续改进</h2>
+                <p class="text-base text-gray-700 max-w-3xl leading-relaxed">
+                    这是将战略转化为行动的蓝图。本节概述了从试点项目启动到全面运营的详细路线图，定义了衡量成功的关键绩效指标（KPI），并建立了一个持续反馈和迭代的闭环系统。
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-center text-gray-800 mb-6">关键绩效指标 (KPIs) - 第三年目标</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                    <div class="bg-muted-purple p-4 rounded-lg">
+                        <div class="text-4xl font-bold text-[#574266]">1,500+</div>
+                        <div class="text-sm font-medium text-gray-700 mt-2">社区年度总成员</div>
+                    </div>
+                    <div class="bg-muted-purple p-4 rounded-lg">
+                        <div class="text-4xl font-bold text-[#574266]">65%</div>
+                        <div class="text-sm font-medium text-gray-700 mt-2">平均年化留存率</div>
+                    </div>
+                    <div class="bg-muted-purple p-4 rounded-lg">
+                        <div class="text-4xl font-bold text-[#574266]">70%</div>
+                        <div class="text-sm font-medium text-gray-700 mt-2">住宿及办公空间年均占用率</div>
+                    </div>
+                    <div class="bg-muted-purple p-4 rounded-lg">
+                        <div class="text-4xl font-bold text-[#574266]">> 50</div>
+                        <div class="text-sm font-medium text-gray-700 mt-2">NPS (净推荐值)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-center text-gray-800 mb-6">实施路线图 (2026 - 2027)</h3>
+                <div class="space-y-6">
+                    <div class="relative pl-8">
+                        <div class="absolute left-0 top-1 w-4 h-4 bg-[#574266] rounded-full border-4 border-white shadow"></div>
+                        <div class="absolute left-[7px] top-6 h-full w-0.5 bg-gray-300"></div>
+                        <h4 class="font-bold text-lg text-gray-800">阶段 1: 试点启动与验证 (2026 Q1-Q2)</h4>
+                        <p class="text-sm text-gray-600 mt-1">启动为期3个月、50名特邀游民的试点项目。重点测试康养产品包、网络性能和社区活动流程。收集NPS和深度访谈数据。</p>
+                        <span class="text-xs font-medium text-[#574266] bg-muted-purple py-0.5 px-2 rounded-full">里程碑：试点NPS > 40</span>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute left-0 top-1 w-4 h-4 bg-[#574266] rounded-full border-4 border-white shadow"></div>
+                        <div class="absolute left-[7px] top-6 h-full w-0.5 bg-gray-300"></div>
+                        <h4 class="font-bold text-lg text-gray-800">阶段 2: 设施升级与品牌建设 (2026 Q2-Q3)</h4>
+                        <p class="text-sm text-gray-600 mt-1">根据试点反馈，全面升级网络基础设施。启动全球品牌推广，重点突出“芳香康养”与“水晶冥想”的独特性。与政府敲定签证便利化支持。</p>
+                        <span class="text-xs font-medium text-[#574266] bg-muted-purple py-0.5 px-2 rounded-full">里程碑：启动全球网站 & 预订系统</span>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute left-0 top-1 w-4 h-4 bg-[#574266] rounded-full border-4 border-white shadow"></div>
+                        <div class="absolute left-[7px] top-6 h-full w-0.5 bg-gray-300"></div>
+                        <h4 class="font-bold text-lg text-gray-800">阶段 3: 市场扩张与社区深化 (2026 Q4 - 2027 Q2)</h4>
+                        <p class="text-sm text-gray-600 mt-1">向全球市场开放会员申请。建立常态化社区活动日历和本地共创项目。与亚洲及欧美的游民社群建立合作导流关系。</p>
+                        <span class="text-xs font-medium text-[#574266] bg-muted-purple py-0.5 px-2 rounded-full">里程碑：实现100名常驻成员</span>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute left-0 top-1 w-4 h-4 bg-amber-600 rounded-full border-4 border-white shadow"></div>
+                        <h4 class="font-bold text-lg text-gray-800">阶段 4: 稳定运营与盈利 (2027 Q3 ->)</h4>
+                        <p class="text-sm text-gray-600 mt-1">实现月度运营收支平衡。启动二期康养产品开发。建立社区自治委员会，实现可持续运营。评估并启动创业孵化器支持计划。</p>
+                        <span class="text-xs font-medium text-amber-700 bg-amber-100 py-0.5 px-2 rounded-full">里程碑：实现月度盈利</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">反馈与迭代机制</h3>
+                <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-center">
+                        <span class="mr-3 text-lg">📊</span>
+                        <strong>月度运营复盘：</strong> 审查KPI数据，调整运营策略。
+                    </li>
+                    <li class="flex items-center">
+                        <span class="mr-3 text-lg">💬</span>
+                        <strong>实时反馈渠道：</strong> 建立专用的Telegram/微信群，即时响应游民需求。
+                    </li>
+                    <li class="flex items-center">
+                        <span class="mr-3 text-lg">🔄</span>
+                        <strong>季度战略校准：</strong> 召开顾问委员会（包括政府代表、游民代表、本地代表），评估战略方向。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 mt-12 border-t border-gray-200">
+        <p class="text-sm text-gray-500">
+            海南屯昌·梦幻香山 | 数字游民社区战略方案 | 2025
+        </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navContainer = document.getElementById('nav-container');
+            const contentContainer = document.getElementById('contentContainer');
+            const tabButtons = navContainer.querySelectorAll('.tab-button');
+            const sections = contentContainer.querySelectorAll('section');
+
+            navContainer.addEventListener('click', (e) => {
+                const clickedButton = e.target.closest('.tab-button');
+                if (!clickedButton) return;
+
+                const targetTab = clickedButton.dataset.tab;
+
+                tabButtons.forEach(btn => {
+                    if (btn === clickedButton) {
+                        btn.classList.add('tab-active');
+                        btn.classList.remove('tab-inactive');
+                    } else {
+                        btn.classList.add('tab-inactive');
+                        btn.classList.remove('tab-active');
+                    }
+                });
+
+                sections.forEach(section => {
+                    if (section.id === targetTab) {
+                        section.classList.remove('hidden');
+                    } else {
+                        section.classList.add('hidden');
+                    }
+                });
+            });
+
+            function initCharts() {
+                // 图表工具提示的主色调改为参考色 #574266
+                const commonTooltip = {
+                    backgroundColor: '#fff',
+                    titleColor: '#574266',
+                    bodyColor: '#333',
+                    borderColor: '#ddd',
+                    borderWidth: 1,
+                    padding: 10,
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += context.parsed.y;
+                            }
+                            if (context.parsed.x !== null && context.dataset.data[context.dataIndex].r) {
+                                label += ` (x: ${context.parsed.x}, y: ${context.parsed.y}, r: ${context.dataset.data[context.dataIndex].r})`;
+                            } else if (context.parsed) {
+                                label = context.label + ': ' + context.parsed;
+                                if(context.dataset.data[context.dataIndex]) {
+                                    label += '%';
+                                }
+                            }
+                            return label;
+                        }
+                    }
+                };
+
+                const commonLegend = {
+                    labels: {
+                        color: '#4b5563'
+                    }
+                };
+
+                initMarketChart(commonTooltip, commonLegend);
+                initRadarChart(commonTooltip, commonLegend);
+                initBubbleChart(commonTooltip, commonLegend);
+                initLineChart(commonTooltip, commonLegend);
+            }
+            
+            function initMarketChart(commonTooltip, commonLegend) {
+                const ctx = document.getElementById('marketChart')?.getContext('2d');
+                if (!ctx) return;
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['深度工作者 (50%)', '生物黑客 (30%)', '生活方式博主 (20%)'],
+                        datasets: [{
+                            data: [50, 30, 20],
+                            // 图表颜色: 紫色，金色，绿色
+                            backgroundColor: ['#A762E6', '#DE9E44', '#057748'],
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                ...commonLegend,
+                                position: 'bottom',
+                            },
+                            tooltip: {
+                                ...commonTooltip,
+                            }
+                        }
+                    }
+                });
+            }
+
+            function initRadarChart(commonTooltip, commonLegend) {
+                const ctx = document.getElementById('radarChart')?.getContext('2d');
+                if (!ctx) return;
+                new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['社区感', '低成本', '康养特色', '政策支持', '基础设施'],
+                        datasets: [
+                            {
+                                label: '梦幻香山 (混合)',
+                                data: [8, 6, 10, 9, 7],
+                                fill: true,
+                                // 图表颜色调整为参考色
+                                backgroundColor: 'rgba(87, 66, 102, 0.2)', // #574266 with opacity
+                                borderColor: '#574266',
+                                pointBackgroundColor: '#574266',
+                            },
+                            {
+                                label: '巴厘岛 (分散)',
+                                data: [9, 9, 7, 6, 6],
+                                fill: true,
+                                backgroundColor: 'rgba(245, 158, 11, 0.2)',
+                                borderColor: '#f59e0b',
+                                pointBackgroundColor: '#f59e0b',
+                            },
+                            {
+                                label: '里斯本 (城市)',
+                                data: [7, 7, 5, 7, 9],
+                                fill: true,
+                                backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                                borderColor: '#3b82f6',
+                                pointBackgroundColor: '#3b82f6',
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: commonLegend,
+                            tooltip: commonTooltip,
+                        },
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 10,
+                                grid: { color: '#e5e7eb' },
+                                angleLines: { color: '#e5e7eb' },
+                                pointLabels: { color: '#374151', font: { size: 13 } }
+                            }
+                        }
+                    }
+                });
+            }
+
+            function initBubbleChart(commonTooltip, commonLegend) {
+                const ctx = document.getElementById('bubbleChart')?.getContext('2d');
+                if (!ctx) return;
+                new Chart(ctx, {
+                    type: 'bubble',
+                    data: {
+                        datasets: [
+                            {
+                                label: '梦幻香山',
+                                data: [{ x: 3, y: 6, r: 25 }],
+                                // 图表颜色调整为参考色
+                                backgroundColor: '#574266',
+                            },
+                            {
+                                label: '巴厘岛 (Canggu)',
+                                data: [{ x: 9, y: 8, r: 15 }],
+                                backgroundColor: '#f59e0b',
+                            },
+                            {
+                                label: '清迈',
+                                data: [{ x: 8, y: 9, r: 10 }],
+                                backgroundColor: '#ef4444',
+                            },
+                            {
+                                label: '里斯本',
+                                data: [{ x: 7, y: 6, r: 8 }],
+                                backgroundColor: '#3b82f6',
+                            },
+                            {
+                                label: '迪拜',
+                                data: [{ x: 4, y: 3, r: 12 }],
+                                backgroundColor: '#8b5cf6',
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: commonLegend,
+                            tooltip: commonTooltip,
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: '社区成熟度 (1-10)',
+                                    color: '#4b5563'
+                                },
+                                min: 0,
+                                max: 10,
+                                grid: { color: '#f3f4f6' }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: '生活成本优势 (10=低成本)',
+                                    color: '#4b5563'
+                                },
+                                min: 0,
+                                max: 10,
+                                grid: { color: '#f3f4f6' }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            function initLineChart(commonTooltip, commonLegend) {
+                const ctx = document.getElementById('lineChart')?.getContext('2d');
+                if (!ctx) return;
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['年 1 (2026)', '年 2 (2027)', '年 3 (2028)'],
+                        datasets: [
+                            {
+                                label: '保守情景',
+                                data: [500, 900, 1400],
+                                borderColor: '#ef4444',
+                                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                                tension: 0.1,
+                                fill: true
+                            },
+                            {
+                                label: '预期情景',
+                                data: [700, 1500, 2500],
+                                // 图表颜色调整为参考色
+                                borderColor: '#574266',
+                                backgroundColor: 'rgba(87, 66, 102, 0.1)',
+                                tension: 0.1,
+                                fill: true
+                            },
+                            {
+                                label: '高增长情景',
+                                data: [900, 2200, 4000],
+                                borderColor: '#f59e0b',
+                                backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                                tension: 0.1,
+                                fill: true
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: commonLegend,
+                            tooltip: commonTooltip,
+                        },
+                        scales: {
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: '年收入 (千 人民币)',
+                                    color: '#4b5563'
+                                },
+                                grid: { color: '#f3f4f6' }
+                            },
+                            x: {
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            }
+
+            initCharts();
+        });
+    </script>
+
+</body>
+</html>
